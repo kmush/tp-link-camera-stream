@@ -3,7 +3,7 @@
 #include <string>
 
 int main(int argc, char** argv) {
-    std::string url = "rtsp://admin:adminadmin@192.168.1.100/stream1";
+    std::string url = "rtsp://admin:adminadmin@192.168.1.101/stream1";
     bool record = false;
 
     // Simple command line argument parsing

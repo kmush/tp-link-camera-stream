@@ -2,7 +2,7 @@
 #include <iostream>
 
 int main() {
-    std::string url = "rtsp://admin:adminadmin@192.168.1.101/stream1";
+    std::string url = "rtsp://username:password@ip_address/stream1";
     
     std::cout << "Trying to open: " << url << std::endl;
 

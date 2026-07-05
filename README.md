@@ -1,37 +1,47 @@
-# Vehicle Camera Connectivity Demo in C++
+# Vehicle Connectivity Gateway Demo
 
-A real-time RTSP camera streaming application built in **C++** using OpenCV. This project demonstrates network-based video processing and serves as a practical example of handling real-time data streams — relevant to **vehicle camera systems** and **connectivity functions** in modern automotive Bordnetz architectures.
+**C++ project simulating a smart camera gateway for connected vehicles.**
 
-## 🎯 Project Relevance to Automotive Connectivity
-
-This project showcases skills directly transferable to **Connectivity Bordnetz** development:
-- Real-time network data streaming (RTSP protocol)
-- Media processing pipeline similar to camera data handling in ADAS / surround-view systems
-- Robust error handling and multi-backend support
-- Clean CMake build system for cross-platform development
-- Foundation for working with high-bandwidth vehicle data streams (e.g. cameras over Automotive Ethernet)
+Demonstrates real-time camera streaming + MQTT data publishing — key technologies in modern automotive connectivity (Bordnetz / V2C communication).
 
 ## Features
+- RTSP camera streaming with OpenCV
+- MQTT publishing of camera status (simulating vehicle telemetry)
+- Video recording capability
+- Clean CMake build system
+- Multi-threading ready architecture
 
-- Real-time RTSP video streaming from IP cameras
-- Multiple backend fallback (`CAP_FFMPEG`, `CAP_MSMF`, `CAP_ANY`)
-- Command-line configuration support (URL, credentials)
-- Live video display with keyboard controls
-- Clean, modular, and well-commented C++17 code
-- Cross-platform CMake build system
+## Relevance to Automotive Connectivity
+- Real-time video processing (similar to surround-view / ADAS cameras)
+- MQTT for cloud connectivity (widely used in modern vehicles)
+- Network protocol handling
+- Structured embedded Linux development (Raspberry Pi compatible)
 
-## Technologies Used
-
-- **C++17**
-- **OpenCV 4** (video capture & processing)
-- **CMake** (build system)
-- **RTSP / FFmpeg** backend
-- Git + modern development practices
-
-## Build & Run (Linux)
+## Build (Linux)
 
 ```bash
 mkdir build && cd build
 cmake ..
-make -j4
-./camera "rtsp://admin:password@camera-ip/stream1"
+make
+./gateway "rtsp://admin:pass@192.168.1.101/stream1" --record
+```
+
+## Logging & Commands
+- The gateway writes structured logs to [logs/mqtt.log](logs/mqtt.log) and [logs/events.log](logs/events.log).
+- It publishes status to `vehicle/camera/status` and alerts to `vehicle/camera/alert`.
+- Subscribe to `vehicle/camera/status` to observe status messages, or publish simple commands to `vehicle/camera/cmd` to control behavior (e.g., `record_on` / `record_off`).
+
+Example: monitor MQTT status with mosquitto_sub
+
+```bash
+mosquitto_sub -h test.mosquitto.org -t "vehicle/camera/status"
+```
+## Requirements for Linux
+
+## Prerequisites (Linux)
+
+```bash
+sudo apt update
+sudo apt install build-essential cmake git pkg-config \
+    libopencv-dev libmosquitto-dev mosquitto-clients
+```

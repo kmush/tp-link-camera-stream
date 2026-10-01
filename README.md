@@ -43,5 +43,6 @@ mosquitto_sub -h test.mosquitto.org -t "vehicle/camera/status"
 ```bash
 sudo apt update
 sudo apt install build-essential cmake git pkg-config \
-    libopencv-dev libmosquitto-dev mosquitto-clients
+    libopencv-dev libmosquitto-dev mosquitto-clients mosquitto mosquitto-clients
+sudo systemctl enable --now mosquitto
 ```

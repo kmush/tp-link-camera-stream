@@ -1,6 +1,21 @@
+<script setup lang="ts">
+const version = 3 + 1
+</script>
+
 <template>
-  <div>
-    <NuxtRouteAnnouncer />
-    <NuxtWelcome />
+  <div class="hello">
+    Hello Nuxt {{ version }}!
   </div>
+  <div class="stream">
+    <img :src="streamUrl">
+  </div>
+  
 </template>
+
+<style scoped>
+.hello {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 3rem;
+  padding: 2rem;
+}
+</style>

@@ -60,7 +60,7 @@ async function setRecording(enabled: boolean) {
         <span class="live-pill" v-if="status?.connected">LIVE</span>
       </div>
       <div class="video-frame">
-        <img v-if="status?.connected" src="/api/stream" alt="Live camera stream">
+        <img v-if="status?.connected" :src="'/api/stream'" alt="Live camera stream">
         <div v-else class="empty-state">
           <span class="camera-icon">◉</span>
           <p>Waiting for camera gateway</p>

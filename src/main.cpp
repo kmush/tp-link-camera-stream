@@ -36,7 +36,7 @@ void on_connect(struct mosquitto* mosq, void* obj, int rc) {
 int main(int argc, char** argv) {
     logFile.open("gateway.log", std::ios::app);
     writeLog("=== Program Started ===");
-    std::string url = "rtsp://admin:adminadmin@192.168.1.101/stream1";
+    std::string url = "rtsp://admin:adminadmin@192.168.1.100/stream1";
     bool record = false;
 
     if (argc > 1) url = argv[1];
@@ -115,6 +115,8 @@ int main(int argc, char** argv) {
     std::thread httpThread([&server] {
         if (!server.listen("0.0.0.0", 8080)) {
             std::cerr << "HTTP server failed to listen on port 8080" << std::endl;
+        }else{
+            std::cerr << "Server listening at 0.0.0.0:8080" << std:: endl;
         }
     });
 

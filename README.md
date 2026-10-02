@@ -46,3 +46,13 @@ sudo apt install build-essential cmake git pkg-config \
     libopencv-dev libmosquitto-dev mosquitto-clients mosquitto mosquitto-clients
 sudo systemctl enable --now mosquitto
 ```
+
+## ERRORS
+1. GLIBC_PRIVATE
+If you see the following error:
+- symbol lookup error: /snap/core20/current/lib/x86_64-linux-gnu/libpthread.so.0: undefined symbol: __libc_pthread_init, version GLIBC_PRIVATE
+
+The run command:
+```bash
+unset GTK_PATH
+```

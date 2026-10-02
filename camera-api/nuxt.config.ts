@@ -4,8 +4,8 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   runtimeConfig: {
     public: {
-      //cameraGatewayUrl: 'http://localhost:8080'
-      cameraGatewayUrl: '192.168.1.100/stream1'
+      cameraGatewayUrl: 'http://localhost:8080'
+      //cameraGatewayUrl: '192.168.1.100/stream1'
     }
   }
 })
